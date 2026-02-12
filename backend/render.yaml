@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: moodboard-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        fromSecret: database_url
+      - key: JWT_SECRET
+        fromSecret: jwt_secret
+      - key: CLOUDINARY_CLOUD_NAME
+        fromSecret: cloudinary_cloud_name
+      - key: CLOUDINARY_API_KEY
+        fromSecret: cloudinary_api_key
+      - key: CLOUDINARY_API_SECRET
+        fromSecret: cloudinary_api_secret
+      - key: FRONTEND_URL
+        fromSecret: frontend_url
+
+  - type: pserv
+    name: moodboard-db
+    runtime: postgres
+    version: 15
+    databaseName: moodboard_db
+    user: moodboard_user
+    plan: free
