@@ -22,7 +22,7 @@ const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string; birthDate?: string }>({});
   const navigate = useNavigate();
-  const { signup } = useAuth();
+  const { signup, loginWithGoogle } = useAuth();
 
   const validateForm = () => {
     const newErrors: { name?: string; email?: string; password?: string; birthDate?: string } = {};
@@ -145,6 +145,22 @@ const SignUp = () => {
               {/* Google */}
               <Button
                 variant="outline"
+                onClick={async () => {
+                  const success = await loginWithGoogle();
+                  if (success) {
+                    toast({
+                      title: "Welcome!",
+                      description: "You've successfully signed in with Google.",
+                    });
+                    navigate("/dashboard");
+                  } else {
+                    toast({
+                      title: "Sign in failed",
+                      description: "Google sign in failed. Please try again.",
+                      variant: "destructive",
+                    });
+                  }
+                }}
                 className="mt-8 h-12 w-full rounded-2xl border-2 text-sm font-medium hover:border-primary/50 transition-colors"
               >
                 <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
