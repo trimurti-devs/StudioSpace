@@ -88,16 +88,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/boards', boardRoutes);
 app.use('/api/images', imageRoutes);
 
-// Serve static files from the React app build directory (for production deployment)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../../dist')));
-
-  // Catch all handler: send back React's index.html file for client-side routing
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../dist/index.html'));
-  });
-}
-
 // 404 handler for API routes
 app.use('/api/*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
