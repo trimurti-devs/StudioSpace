@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{subject}}</title>
+  <style>
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f8f8f8;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 300;
+      color: #d4a574;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+    .tagline {
+      font-size: 12px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 300;
+      color: #2c2c2c;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .content {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .message-box {
+      background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
+      border-left: 4px solid #d4a574;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 0 12px 12px 0;
+    }
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4a574 0%, #c9956b 100%);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 20px 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #f0f0f0;
+      font-size: 12px;
+      color: #999;
+    }
+    .social-links {
+      margin: 15px 0;
+    }
+    .social-links a {
+      color: #d4a574;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .highlight {
+      color: #d4a574;
+      font-weight: 600;
+    }
+    .emoji {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">✦ STUDIO SPACE</div>
+      <div class="tagline">Your aesthetic journey</div>
+    </div>
+    
+    <h1>{{subject}}</h1>
+    
+    <div class="content">
+      <p>Hi <span class="highlight">{{to_name}}</span>,</p>
+      
+      <div class="message-box">
+        <p style="margin: 0; white-space: pre-line;">{{message}}</p>
+      </div>
+      
+      <p style="text-align: center;">
+        <a href="https://studio-space.app/dashboard" class="button">Go to Dashboard</a>
+      </p>
+    </div>
+    
+    <div class="footer">
+      <p>Keep creating beautiful things <span class="emoji">✨🎨</span></p>
+      <div class="social-links">
+        <a href="#">Instagram</a> • 
+        <a href="#">Twitter</a> • 
+        <a href="#">Pinterest</a>
+      </div>
+      <p style="margin-top: 20px; font-size: 11px; color: #bbb;">
+        You're receiving this email because you have an account on Studio Space.<br>
+        <a href="#" style="color: #bbb;">Unsubscribe</a> | 
+        <a href="#" style="color: #bbb;">Privacy Policy</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
