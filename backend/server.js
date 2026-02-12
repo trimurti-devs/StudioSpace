@@ -56,8 +56,8 @@ app.use('/api/images', imageRoutes);
 // Error handling middleware
 app.use(errorHandler);
 
-// 404 handler
-app.use('*', (req, res) => {
+// 404 handler - only for API routes
+app.use('/api/*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
