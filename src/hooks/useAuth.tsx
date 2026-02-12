@@ -14,6 +14,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<boolean>;
   signup: (name: string, email: string, password: string, birthDate: string) => Promise<boolean>;
+  loginWithGoogle: () => Promise<boolean>;
   logout: () => void;
   deleteAccount: () => void;
   updateUser: (updates: Partial<User>) => void;
@@ -65,20 +66,49 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string): Promise<boolean> => {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
+
     const userData = localStorage.getItem(`user_${email}`);
     if (!userData) {
       return false;
     }
-    
+
     const parsed = JSON.parse(userData);
     if (parsed.password !== password) {
       return false;
     }
-    
+
     const { password: _, ...userWithoutPassword } = parsed;
     localStorage.setItem("current_user", JSON.stringify(userWithoutPassword));
     setUser(userWithoutPassword);
+    return true;
+  };
+
+  const loginWithGoogle = async (): Promise<boolean> => {
+    // Simulate Google OAuth flow
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // Mock Google user data
+    const mockGoogleUser: User = {
+      id: crypto.randomUUID(),
+      name: "Demo User",
+      email: "demo@google.com",
+      birthDate: "1990-01-01",
+      avatar: "https://via.placeholder.com/100",
+      createdAt: new Date().toISOString(),
+    };
+
+    // Check if Google user already exists
+    const existingUser = localStorage.getItem(`user_${mockGoogleUser.email}`);
+    if (!existingUser) {
+      // Create new Google user
+      localStorage.setItem(`user_${mockGoogleUser.email}`, JSON.stringify({
+        ...mockGoogleUser,
+        provider: "google"
+      }));
+    }
+
+    localStorage.setItem("current_user", JSON.stringify(mockGoogleUser));
+    setUser(mockGoogleUser);
     return true;
   };
 
@@ -118,6 +148,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isAuthenticated: !!user,
         login,
         signup,
+        loginWithGoogle,
         logout,
         deleteAccount,
         updateUser,
