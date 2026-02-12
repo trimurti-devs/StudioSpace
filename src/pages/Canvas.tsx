@@ -102,7 +102,7 @@ const Canvas = () => {
         const mockBoard: MockBoard = {
           id: boardId,
           title: "Untitled Moodboard",
-          username: "current_user",
+          username: user?.name || "Anonymous",
           images: [],
           tags: [],
           viewCount: 0,
